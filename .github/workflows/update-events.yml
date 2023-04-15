@@ -51,6 +51,7 @@ jobs:
       - run: pnpm start
         env:
           API_HOST: ${{ secrets.API_HOST }}
+          PUBLISH_DIR: ./data
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
