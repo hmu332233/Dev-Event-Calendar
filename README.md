@@ -2,6 +2,8 @@
 
 [brave-people/Dev-Event](https://github.com/brave-people/Dev-Event)의 행사 목록을 캘린더로 구독해보세요!
 
+<img src="https://user-images.githubusercontent.com/10302969/232250096-320f6203-5b3b-4e9f-bace-c7a3e27793aa.png" width="700"/>
+
 ## 캘린더 URL 구독하기
 
 Google Calendar 및 Apple Calendar와 같은 인기 있는 캘린더 애플리케이션에서 쉽게 구독할 수 있습니다.
