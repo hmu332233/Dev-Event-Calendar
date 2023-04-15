@@ -4,6 +4,8 @@ import { getDevEvents } from './api';
 import { DevEvent } from './types';
 import { createIcsFile } from './utils/file';
 
+const PUBLISH_DIR = process.env.publish_dir || 'data';
+
 function convertToIcs(devEvents: DevEvent[]): string {
   const targetEvents = devEvents.map((devEvent) => {
     const event: EventAttributes = {
@@ -32,7 +34,7 @@ function convertToIcs(devEvents: DevEvent[]): string {
 async function run() {
   const devEvents = await getDevEvents();
   const icsString = convertToIcs(devEvents);
-  createIcsFile('data', icsString);
+  createIcsFile(PUBLISH_DIR, icsString);
 }
 
 run();
