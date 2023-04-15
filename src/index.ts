@@ -2,17 +2,18 @@ import { createEvents, EventAttributes } from 'ics';
 import { getTimeArray } from './utils/date';
 import { getDevEvents } from './api';
 import { DevEvent } from './types';
+import { createIcsFile } from './utils/file';
 
-function convertToIcs(events: DevEvent[]): string {
-  const targetEvents = events.map((issue) => {
+function convertToIcs(devEvents: DevEvent[]): string {
+  const targetEvents = devEvents.map((devEvent) => {
     const event: EventAttributes = {
       calName: 'Dev-Event-Calendar',
-      start: getTimeArray(issue.start, 'Asia/Seoul'),
+      start: getTimeArray(devEvent.start, 'Asia/Seoul'),
       startInputType: 'utc',
-      end: getTimeArray(issue.end, 'Asia/Seoul'),
+      end: getTimeArray(devEvent.end, 'Asia/Seoul'),
       endInputType: 'utc',
-      title: issue.title,
-      description: issue.link,
+      title: devEvent.title,
+      description: devEvent.link,
       classification: 'PUBLIC',
       status: 'CONFIRMED',
     };
@@ -30,9 +31,8 @@ function convertToIcs(events: DevEvent[]): string {
 
 async function run() {
   const devEvents = await getDevEvents();
-
-  const aaa = convertToIcs(devEvents);
-  console.log(aaa);
+  const icsString = convertToIcs(devEvents);
+  createIcsFile('data', icsString);
 }
 
 run();
